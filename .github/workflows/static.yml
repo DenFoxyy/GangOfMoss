@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gang of Moss - Official Site</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-color: #4CAF50; /* Moss Green */
+            --secondary-color: #FFC107; /* Accent Yellow/Gold */
+            --background-color: #1e1e1e; /* Dark Grey */
+            --text-color: #f0f0f0;
+            --card-bg-color: #2a2a2a;
+            --border-color: #3a3a3a;
+            --header-font: 'Bangers', cursive;
+            --body-font: 'Roboto', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid var(--border-color);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px dashed var(--primary-color);
+        }
+
+        header h1 {
+            font-family: var(--header-font);
+            font-size: 4rem;
+            color: var(--primary-color);
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 0 #000, 
+                         -2px -2px 0 #000, 
+                         2px -2px 0 #000, 
+                         -2px 2px 0 #000,
+                         3px 3px 5px rgba(0,0,0,0.7);
+        }
+
+        header p.subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-color);
+            border-radius: 0 8px 8px 0;
+        }
+
+        section h2 {
+            font-family: var(--header-font);
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .member-card {
+            background-color: var(--background-color);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(var(--primary-color-rgb, 76, 175, 80), 0.3);
+        }
+        
+        .member-card h3 {
+            font-family: var(--header-font);
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .member-card p {
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+        
+        .member-card strong {
+            color: var(--secondary-color);
+        }
+
+        .mission-steps {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .mission-steps li {
+            background-color: rgba(255,255,255,0.05);
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid var(--secondary-color);
+            font-size: 1.1em;
+        }
+        .mission-steps li::before {
+            content: "💥 ";
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .quote {
+            font-style: italic;
+            background-color: rgba(var(--secondary-color-rgb, 255, 193, 7), 0.1);
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 5px;
+            color: #e0e0e0;
+        }
+        .quote strong {
+            color: var(--secondary-color);
+        }
+        .quote span.dramatic {
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .highlight-yell {
+            color: #FF5722; /* Bright Orange for yells */
+            font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            display: inline-block;
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+            transform: translate3d(0, 0, 0);
+        }
+
+        @keyframes shake {
+          10%, 90% { transform: translate3d(-1px, 0, 0); }
+          20%, 80% { transform: translate3d(2px, 0, 0); }
+          30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+          40%, 60% { transform: translate3d(3px, 0, 0); }
+        }
+
+        .aftermath-item {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .aftermath-item::before {
+            content: "➡️";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+        
+        .moral {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            padding: 20px;
+            background-color: rgba(0,0,0,0.2);
+            border: 2px dashed var(--primary-color);
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .moral::before {
+            content: "🎬 ";
+        }
+        .moral::after {
+            content: " 🎬";
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3rem;
+            }
+            section h2 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p.subtitle {
+                font-size: 1rem;
+            }
+            .member-card {
+                padding: 15px;
+            }
+            .member-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>The Gang of Moss</h1>
+            <p class="subtitle">Legends. Chaos. Crocs.</p>
+        </header>
+
+        <section id="intro">
+            <h2>The Legend Begins...</h2>
+            <p>In the sleepy Norwegian town of Moss, something strange was happening. Quiet parks echoed with laughter, Crocs were flying through the air, and hockey pucks were mysteriously vanishing from the local rink. Behind it all? A legendary crew known only as <strong class="highlight">"The Gang of Moss."</strong></p>
+        </section>
+
+        <section id="members">
+            <h2>Meet the Gang</h2>
+            <div class="members-grid">
+                <div class="member-card">
+                    <h3>🏒 Joakim – The Ice King</h3>
+                    <p>The ice-cold leader. A rising star for Stjernen Hockey, he wore his helmet even to class and never spoke unless it was about <strong>slapshots or secret plans</strong>.</p>
+                </div>
+                <div class="member-card">
+                    <h3>🤪 Marius – The Wild Card</h3>
+                    <p>Nobody knew what he was going to do next — not even Marius. He once tried to <strong>arm-wrestle a goose</strong> (and lost!). Somehow, he was still feared by half the school.</p>
+                </div>
+                <div class="member-card">
+                    <h3>🗣️ Noah – The Tiny Talker</h3>
+                    <p>Known for yelling "<span class="highlight-yell">Baris Somali!</span>" in the middle of dead silence and then vanishing. Some say he can teleport. Others say he just hides in lockers.</p>
+                </div>
+                <div class="member-card">
+                    <h3>🦊 Denys – The Smooth Operator</h3>
+                    <p>Obsessed with foxes and always trying to sell people knock-off Crocs with fox logos. Had an Instagram account called <strong>"FoxyFeet"</strong> with 14 followers (mostly his own burners).</p>
+                </div>
+                <div class="member-card">
+                    <h3>📹 Tobias – The YouTube Star</h3>
+                    <p>Whole Nøkkeland watched him prank his little brother, build mario for contest and confess his love for a girl named Melani. Once flew a drone over her house: <strong class="highlight">“Marry me pls.”</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mission">
+            <h2>The Mission: Operation Ice Rink Chaos</h2>
+            <p>It all started when Moss Kommune announced they were going to turn the beloved local hockey rink into a parking lot. Joakim was heartbroken. That rink was his life. Tobias decided it was the perfect time for content. The Gang of Moss had to act.</p>
+            <p>Their plan was simple:</p>
+            <ul class="mission-steps">
+                <li>Sneak into the mayor's office.</li>
+                <li>Steal the blueprint for the parking lot.</li>
+                <li>Replace it with Denys’ custom plan for a Fox Sanctuary and Crocs Emporium.</li>
+                <li>Escape without getting caught.</li>
+            </ul>
+            <p style="text-align: center; font-style: italic; margin-top: 15px;">What could possibly go wrong?</p>
+        </section>
+
+        <section id="chaos">
+            <h2>The Chaos</h2>
+            <p>At 2 a.m., wearing ski masks (and in Noah’s case, a Darth Vader helmet), the gang broke into the office. Marius got distracted trying to fight a statue, Joakim picked the lock using a hockey stick, and Denys was <strong class="highlight">live-streaming the whole thing by accident</strong>.</p>
+            <p>Inside, Tobias found the blueprints while narrating dramatically:</p>
+            <div class="quote">
+                "Guys, <span class="dramatic">this is real life</span>. This is <span class="dramatic">history</span>. This is me saving Melani's dream of loving a man who saves rinks!"
+            </div>
+            <p>Just as they were about to leave, Noah tripped the alarm by screaming "<span class="highlight-yell">BARIS SOMALI!</span>" too loud near a motion sensor. Lights flashed. Sirens blared.</p>
+        </section>
+
+        <section id="getaway">
+            <h2>The Getaway</h2>
+            <p>Joakim grabbed the fake blueprints. Marius threw a chair out the window. Noah jumped into a mailbox. Denys dropped a bag of Crocs as a distraction, yelling "<span class="highlight-yell">LIMITED EDITION FOX DROPS!</span>" as security guards scrambled after them.</p>
+            <p>Tobias filmed the whole escape, edited it into a cinematic trailer, and uploaded it with the title:</p>
+            <p style="text-align:center; font-weight:bold; font-size:1.2em; color: var(--secondary-color); margin-top:10px;">
+                “WE ROBBED THE MAYOR’S OFFICE FOR LOVE ❤️ (EMOTIONAL)”
+            </p>
+        </section>
+
+        <section id="aftermath">
+            <h2>The Aftermath</h2>
+            <p>The video went viral. It got picked up by NRK. People started protesting outside City Hall, holding signs like “SAVE THE RINK” and “FOXES NEED HOMES TOO.” Under pressure, the mayor caved.</p>
+            <ul class="aftermath-list">
+                <li class="aftermath-item">The rink was <strong class="highlight">saved</strong>.</li>
+                <li class="aftermath-item">Denys got a Crocs kiosk next to it.</li>
+                <li class="aftermath-item">Tobias got a DM from Melani (she replied <strong class="highlight">“maybe” ❤️</strong>).</li>
+                <li class="aftermath-item">Marius is still banned from the library.</li>
+                <li class="aftermath-item">Noah... was last seen crawling into a vending machine.</li>
+            </ul>
+            <p style="margin-top: 20px;">And thus, the Gang of Moss became local legends — misunderstood, chaotic, but unforgettable.</p>
+        </section>
+
+        <div class="moral">
+            If you’re going to cause mayhem… make sure someone’s filming.
+        </div>
+
+        <footer>
+            <p>&copy; <span id="currentYear"></span> The Gang of Moss. All rights reserved (probably).</p>
+            <p>Site cooked up by an AI assistant, inspired by true legends.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // For the CSS variables with RGB values for rgba()
+        const root = document.documentElement;
+        const primaryColor = getComputedStyle(root).getPropertyValue('--primary-color').trim();
+        const secondaryColor = getComputedStyle(root).getPropertyValue('--secondary-color').trim();
+
+        function hexToRgb(hex) {
+            let r = 0, g = 0, b = 0;
+            // 3 digits
+            if (hex.length == 4) {
+                r = "0x" + hex[1] + hex[1];
+                g = "0x" + hex[2] + hex[2];
+                b = "0x" + hex[3] + hex[3];
+            // 6 digits
+            } else if (hex.length == 7) {
+                r = "0x" + hex[1] + hex[2];
+                g = "0x" + hex[3] + hex[4];
+                b = "0x" + hex[5] + hex[6];
+            }
+            return `${+r},${+g},${+b}`;
+        }
+
+        if (primaryColor) root.style.setProperty('--primary-color-rgb', hexToRgb(primaryColor));
+        if (secondaryColor) root.style.setProperty('--secondary-color-rgb', hexToRgb(secondaryColor));
+
+    </script>
+
+</body>
+</html>
